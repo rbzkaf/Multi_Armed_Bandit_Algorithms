@@ -16,15 +16,6 @@ class EpsilonGreedy():
         self.counts = [0 for _ in range(self.n_arms)]
         self.values = [0 for _ in range(self.n_arms)]
 
-    def idx_max(self):
-        """
-        Returns Index of Arm to Exploit
-
-        :return: Index of Max
-        """
-
-        return self.values.index(max(self.values))
-
     def get_avg(self):
         """
         Returns average of values

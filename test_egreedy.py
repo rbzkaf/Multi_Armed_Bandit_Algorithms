@@ -1,8 +1,6 @@
 
 from bernoulliArm import BernoulliArm
-from egreedy import EpsilonGreedy
-
-import random
+from Algorithms.egreedy import EpsilonGreedy
 
 import pandas as pd
 import numpy as np
@@ -75,6 +73,8 @@ class Tester():
 
 
 
+
+
 if __name__ == '__main__':
 
     """
@@ -82,9 +82,9 @@ if __name__ == '__main__':
     """
 
 
-    prob_of_arms = [0.2, 0.2, 0.1, 0.9]
+    prob_of_arms = [0.2, 0.2, 0.2, 0.2, 0.4]
     n_arms = len(prob_of_arms)
-    random.shuffle(prob_of_arms)
+    #random.shuffle(prob_of_arms)
     arms = []
     for i in prob_of_arms:
         arm = BernoulliArm(i)
@@ -95,15 +95,13 @@ if __name__ == '__main__':
     """
     Set how long sim should run 
     """
-    num_sims = 10
-    allowed_pulls = 100
+    num_sims = 1
+    allowed_pulls = 1000
 
 
     tester = Tester(arms=n_arms, num_sims= num_sims, allowed_pulls= allowed_pulls)
 
     potential_epsilon_values = [0.1,0.2,0.3,0.4,0.5]
-
-
     """
     Running Simulations 
     """
@@ -117,10 +115,11 @@ if __name__ == '__main__':
         res = res.T
         fin = np.concatenate((fin,res),axis=0)
 
+    print(alg.values)
     fin = fin[1:]
     df = pd.DataFrame(fin, columns=["Epsilon", "Simulation", "Pull_no", "Chosen_arm", "Reward", "Cumul_Reward"])
 
-    df.to_csv("./SimulationData/"+alg.name+"_"+str(num_sims)+"_sim_"+str(allowed_pulls)+"_pulls")
+    #df.to_csv("./SimulationData/"+alg.name+"_"+str(num_sims)+"_sim_"+str(allowed_pulls)+"_pulls")
 
 
 

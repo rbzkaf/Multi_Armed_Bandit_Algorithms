@@ -20,7 +20,7 @@ class BernoulliArm():
 
 if __name__ == '__main__':
 
-    prob = [0.2,0.2,0.1,0.9]
+    prob = [0.2,0.2,0.2,0.9]
     n_arms = len(prob)
 
     random.shuffle(prob)
