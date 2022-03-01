@@ -82,7 +82,6 @@ if __name__ == '__main__':
 
     prob_of_arms = [0.1, 0.12, 0.08, 0.14, 0.15]
     n_arms = len(prob_of_arms)
-    #random.shuffle(prob_of_arms)
     arms = []
     for i in prob_of_arms:
         arm = BernoulliArm(i)

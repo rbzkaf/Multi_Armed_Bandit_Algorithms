@@ -23,7 +23,7 @@ class Thompson():
         # Counts of No Reward
         self.b = [1 for _ in range(self.n_arms)]
 
-    def idx_max(self,draws):
+    def idx_max(self, draws):
         """
         Returns Index of Arm to Exploit
 
