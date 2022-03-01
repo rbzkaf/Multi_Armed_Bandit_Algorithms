@@ -95,8 +95,8 @@ if __name__ == '__main__':
     """
     Set how long sim should run 
     """
-    num_sims = 100
-    allowed_pulls = 1000
+    num_sims = 10
+    allowed_pulls = 100
 
 
     tester = Tester(arms=n_arms, num_sims= num_sims, allowed_pulls= allowed_pulls)
