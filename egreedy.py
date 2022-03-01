@@ -6,6 +6,7 @@ class EpsilonGreedy():
 
         self.epsilon = epsilon
         self.n_arms = n_arms
+        self.name = "Epsilon_Greedy"
         self.counts = [0 for _ in range(n_arms)]
         self.values = [0 for _ in range(n_arms)]
 
@@ -34,7 +35,7 @@ class EpsilonGreedy():
         return sum(self.values) / len(self.values)
 
 
-    def select_arm(self):
+    def pull_arm(self):
         """
         Function to flip Epsilon coin between exploit and explore
         :return:

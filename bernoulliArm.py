@@ -17,3 +17,18 @@ class BernoulliArm():
         else:
             return 1
 
+
+if __name__ == '__main__':
+
+    prob = [0.2,0.2,0.1,0.9]
+    n_arms = len(prob)
+
+    random.shuffle(prob)
+    arms = []
+    for i in prob:
+        arm = BernoulliArm(i)
+        arms.append(arm)
+
+    print(arms[0].draw())
+
+
