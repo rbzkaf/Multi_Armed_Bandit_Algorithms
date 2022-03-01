@@ -16,6 +16,14 @@ class EpsilonGreedy():
         self.counts = [0 for _ in range(self.n_arms)]
         self.values = [0 for _ in range(self.n_arms)]
 
+    def idx_max(self,ucb):
+        """
+        Returns Index of Arm to Exploit
+
+        :return: Index of Max
+        """
+        return ucb.index(max(ucb))
+
     def get_avg(self):
         """
         Returns average of values
@@ -32,7 +40,7 @@ class EpsilonGreedy():
         :return:
         """
         if random.random() > self.epsilon:
-            return self.idx_max()
+            return self.idx_max(self.values)
 
         else:
             return random.randrange(len(self.values))
@@ -41,6 +49,7 @@ class EpsilonGreedy():
     def update(self,chosen_arm,reward):
         """
         Function to update value of particular arm
+        Note: Update is called in Test Algorithm after reward is calculated
 
         :param chosen_arm:
         :param reward:

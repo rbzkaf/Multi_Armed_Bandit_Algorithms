@@ -1,6 +1,6 @@
 
 from bernoulliArm import BernoulliArm
-from Algorithms.egreedy import EpsilonGreedy
+from Algorithms.thompson import Thompson
 
 import pandas as pd
 import numpy as np
@@ -26,8 +26,6 @@ class Tester():
         :return:
         """
         tot_pulls = self.num_sims * self.allowed_pulls
-        ep = algo.epsilon
-        ep = [ep for _ in range(tot_pulls)]
         chosen_arms = [0 for _ in range(tot_pulls)]
         rewards = [0 for _ in range(tot_pulls)]
         cumulative_rewards = [0 for _ in range(tot_pulls)]
@@ -66,7 +64,7 @@ class Tester():
 
 
 
-        return [ep, sim_num, pull_no, chosen_arms, rewards, cumulative_rewards]
+        return [sim_num, pull_no, chosen_arms, rewards, cumulative_rewards]
 
 
 
@@ -101,14 +99,14 @@ if __name__ == '__main__':
 
     tester = Tester(arms=n_arms, num_sims= num_sims, allowed_pulls= allowed_pulls)
 
-    potential_epsilon_values = [0.1,0.2,0.3,0.4,0.5]
+    agent_num = [1,2,3,4,5]
     """
     Running Simulations 
     """
-    fin = np.zeros((1,6))
-    for ep in potential_epsilon_values:
+    fin = np.zeros((1,5))
+    for conf in agent_num:
 
-        alg = EpsilonGreedy(epsilon=ep,n_arms=n_arms)
+        alg = Thompson(n_arms=n_arms)
         res = tester.test_algo(algo=alg, arms=arms)
 
         res = np.array(res)
@@ -117,7 +115,7 @@ if __name__ == '__main__':
 
     print(alg.values)
     fin = fin[1:]
-    df = pd.DataFrame(fin, columns=["Epsilon", "Simulation", "Pull_no", "Chosen_arm", "Reward", "Cumul_Reward"])
+    df = pd.DataFrame(fin, columns=["Simulation", "Pull_no", "Chosen_arm", "Reward", "Cumul_Reward"])
 
     df.to_csv("./SimulationData/"+alg.name+"_"+str(num_sims)+"_sim_"+str(allowed_pulls)+"_pulls")
 

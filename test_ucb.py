@@ -82,7 +82,7 @@ if __name__ == '__main__':
     """
 
 
-    prob_of_arms = [0.2, 0.2, 0.2, 0.2, 0.4]
+    prob_of_arms = [0.1, 0.12, 0.08, 0.14, 0.15]
     n_arms = len(prob_of_arms)
     #random.shuffle(prob_of_arms)
     arms = []
@@ -95,8 +95,8 @@ if __name__ == '__main__':
     """
     Set how long sim should run 
     """
-    num_sims = 1
-    allowed_pulls = 1000
+    num_sims = 100
+    allowed_pulls = 400
 
 
     tester = Tester(arms=n_arms, num_sims= num_sims, allowed_pulls= allowed_pulls)

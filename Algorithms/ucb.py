@@ -69,6 +69,7 @@ class UCB():
     def update(self,chosen_arm,reward):
         """
         Function to update agent's estimate of value of particular arm
+        Note: Update is called in Test Algorithm after reward is calculated
 
         :param chosen_arm:
         :param reward:
